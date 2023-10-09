@@ -2,9 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Biggest Spender</title>
 </head>
 <body>
-$END$
+<h1>Biggest Spender</h1>
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Birthplace</th>
+    <th>Email</th>
+  </tr>
+  <tr>
+    <td th:text="${biggestSpender.id}"></td>
+    <td th:text="${biggestSpender.name}"></td>
+    <td th:text="${biggestSpender.birthPlace}"></td>
+    <td th:text="${biggestSpender.email}"></td>
+  </tr>
+</table>
 </body>
 </html>

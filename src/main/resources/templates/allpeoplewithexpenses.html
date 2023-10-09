@@ -2,9 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>All People with Expenses</title>
 </head>
 <body>
-$END$
+<h1>All People with Expenses</h1>
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Birthplace</th>
+    <th>Email</th>
+  </tr>
+  <th:block th:each="person : ${people}">
+    <tr th:each="person : ${allPeople}">
+      <td th:text="${person.name}"></td>
+      <td th:text="${person.birthPlace}"></td>
+      <td th:text="${person.birthDate}"></td>
+      <td th:text="${person.email}"></td>
+    </tr>
+  </th:block>
+</table>
+
+<h2>Expenses</h2>
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Location</th>
+    <th>Amount</th>
+  </tr>
+  <th:block th:each="expenseList : ${expenses}">
+    <th:block th:each="expense : ${expenseList.value}">
+      <tr th:each="expense : ${allExpenses}">
+        <td th:text="${expense.location}"></td>
+        <td th:text="${expense.amount}"></td>
+        <td th:text="${expense.spender.name}"></td>
+      </tr>
+    </th:block>
+  </th:block>
+</table>
 </body>
 </html>

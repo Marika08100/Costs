@@ -11,11 +11,11 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class StaticsService {
+public class StatisticsService {
     private final ExpenseRepository expenseRepository;
     private final PersonRepository personRepository;
 
-    public StaticsService(ExpenseRepository expenseRepository, PersonRepository personRepository) {
+    public StatisticsService(ExpenseRepository expenseRepository, PersonRepository personRepository) {
         this.expenseRepository = expenseRepository;
         this.personRepository = personRepository;
     }
@@ -25,11 +25,30 @@ public class StaticsService {
         Map<Person, List<Expense>> peopleWithExpenses = new HashMap<>();
         List<Person> allPeople = personRepository.findAll();
         for (Person person : allPeople) {
-            List<Expense> expenses = expenseRepository.findBySender(person);
+            List<Expense> expenses = expenseRepository.findBySpender(person);
             peopleWithExpenses.put(person, expenses);
         }
         return peopleWithExpenses;
     }
 
+    // TODO  a jelenlegi legtöbbet költő ember adatait
+    public Person findTheBiggestSpender() {
+        List<Person> allPerson = personRepository.findAll();
+        Person biggestSpender = null;
+        double maxTotalSpend = 0.0;
+        for (Person person : allPerson) {
+            List<Expense> expenses = expenseRepository.findBySpender(person);
+            double totalExpenses = 0;
+            for (Expense expense : expenses) {
+                totalExpenses += expense.getAmount();
+            }
+            if (totalExpenses > maxTotalSpend) {
+                maxTotalSpend = totalExpenses;
+                biggestSpender = person;
+            }
+
+        }
+        return biggestSpender;
+    }
 
 }

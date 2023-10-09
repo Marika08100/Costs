@@ -5,6 +5,22 @@
     <title>Title</title>
 </head>
 <body>
-
+<h1>Expenses</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Location</th>
+        <th>Amount</th>
+        <th>Spender</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="expense : ${allExpenses}">
+        <td th:text="${expense.location}"></td>
+        <td th:text="${expense.amount}"></td>
+        <td th:text="${expense.spender.name}"></td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
