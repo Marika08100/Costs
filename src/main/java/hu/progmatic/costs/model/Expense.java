@@ -9,7 +9,7 @@ public class Expense {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "expense_id")
     private Long expenseId;
-    @Column (name = "id")
+    @Column (name = "location")
     private String location;
     @Column (name = "amount")
     private double amount;

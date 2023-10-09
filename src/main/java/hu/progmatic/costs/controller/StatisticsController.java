@@ -18,15 +18,13 @@ public class StatisticsController {
     public StatisticsController(StatisticsService staticsService) {
         this.staticsService = staticsService;
     }
-
-
-//    @GetMapping("/all-people-w-expenses")
-//    public String allPeopleWithExpenses(Model model) {
-//        Map<Person, List<Expense>> peopleWithExpenses = staticsService.getAllPeopleWithExpenses();
-//        model.addAttribute("people", peopleWithExpenses.keySet());
-//        model.addAttribute("expenses", peopleWithExpenses);
-//        return "allpeoplewithexpenses";
-//    }
+    @GetMapping("/all-people-w-expenses")
+    public String allPeopleWithExpenses(Model model) {
+        Map<Person, List<Expense>> peopleWithExpenses = staticsService.getAllPeopleWithExpenses();
+        model.addAttribute("people", peopleWithExpenses.keySet());
+        model.addAttribute("expenses", peopleWithExpenses);
+        return "allpeoplewithexpenses";
+    }
 
     @GetMapping("/biggest-spender")
     public String biggestSpender(Model model) {

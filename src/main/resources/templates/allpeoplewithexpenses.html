@@ -6,6 +6,8 @@
 </head>
 <body>
 <h1>All People with Expenses</h1>
+
+<h2>People</h2>
 <table border="1">
   <tr>
     <th>ID</th>
@@ -14,10 +16,10 @@
     <th>Email</th>
   </tr>
   <th:block th:each="person : ${people}">
-    <tr th:each="person : ${allPeople}">
+    <tr>
+      <td th:text="${person.id}"></td>
       <td th:text="${person.name}"></td>
       <td th:text="${person.birthPlace}"></td>
-      <td th:text="${person.birthDate}"></td>
       <td th:text="${person.email}"></td>
     </tr>
   </th:block>
@@ -32,10 +34,10 @@
   </tr>
   <th:block th:each="expenseList : ${expenses}">
     <th:block th:each="expense : ${expenseList.value}">
-      <tr th:each="expense : ${allExpenses}">
+      <tr>
+        <td th:text="${expense.id}"></td>
         <td th:text="${expense.location}"></td>
         <td th:text="${expense.amount}"></td>
-        <td th:text="${expense.spender.name}"></td>
       </tr>
     </th:block>
   </th:block>
